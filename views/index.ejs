@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trupti Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>🛒 Welcome to the online Store</h1>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/cart">Cart</a>
+
+        <% if(isAuthenticated){ %>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        <% } %>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Best Deals on Electronics</h2>
+        <p>Explore premium laptops, smartphones, gaming accessories and more with exciting prices.</p>
+        <a href="#products" class="hero-btn">Shop Now</a>
+    </div>
+</section>
+
+<h2 class="section-title">Featured Products</h2>
+
+<div class="products" id="products">
+    <% products.forEach(product => { %>
+        <div class="card">
+            <img src="<%= product.image %>" alt="">
+            <div class="card-content">
+                <h2><%= product.name %></h2>
+                <p class="desc"><%= product.description %></p>
+                <p class="price">₹<%= product.price %></p>
+
+                <a class="details-btn" href="/product/<%= product._id %>">View Details</a>
+
+                <form action="/add-to-cart" method="POST">
+                    <input type="hidden" name="productId" value="<%= product._id %>">
+                    <button>Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+<footer>
+    <p>© 2026 Online Tech Store | Premium Shopping Experience</p>
+</footer>
+
+</body>
+</html>

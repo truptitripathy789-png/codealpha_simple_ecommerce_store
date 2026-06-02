@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="detail">
+    <img src="<%= product.image %>" alt="">
+    <h1><%= product.name %></h1>
+    <p><%= product.description %></p>
+    <h2>₹<%= product.price %></h2>
+
+    <form action="/add-to-cart" method="POST">
+        <input type="hidden" name="productId" value="<%= product._id %>">
+        <button>Add to Cart</button>
+    </form>
+</div>
+
+</body>
+</html>

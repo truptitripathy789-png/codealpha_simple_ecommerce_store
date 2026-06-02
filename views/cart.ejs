@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<h1>Your Cart</h1>
+
+<% cart.forEach(item => { %>
+    <div class="cart-item">
+        <h3><%= item.name %></h3>
+        <p>₹<%= item.price %></p>
+    </div>
+<% }) %>
+
+<h2>Total: ₹<%= total %></h2>
+
+<form action="/place-order" method="POST">
+    <button>Place Order</button>
+</form>
+
+</body>
+</html>
